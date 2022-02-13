@@ -19,7 +19,8 @@ contract DonationContract is ERC20 {
     }
     function Withdraw(address payable to, uint amount) external requireOwner {
         require(amount <= _totalAmount, "Amount for withdraw must be less or equal than a total amount");
-        to.transfer(address(this).balance);
+        //maybe change _totalAmount to address(this).balance
+        to.transfer(amount);
         _totalAmount -= amount;
     }
     function GetAllDonaters() external view returns(address[] memory){
